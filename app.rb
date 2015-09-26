@@ -5,18 +5,6 @@ require 'sinatra'
 
 get '/' do
 	Slack.configure do |config|
-	  config.token = "xoxb-11404662370-wWxE6Kd5mEwFNzFDngexHsAK"
-	end
-
-	client = Slack::Web::Client.new
-	client.auth_test
-	general_channel = client.channels_list['channels'].detect { |c| c['name'] == 'random' }
-	client.chat_postMessage(channel: general_channel['id'], text: 'Jessy vas a jalar! #friendzone', as_user: true)
-end
-
-get '/realtime' do
-
-	Slack.configure do |config|
 		  config.token = "xoxb-11404662370-wWxE6Kd5mEwFNzFDngexHsAK"
 		end
 
@@ -36,6 +24,4 @@ get '/realtime' do
 	end
 
 	client.start!
-
 end
-
