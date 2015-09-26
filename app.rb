@@ -5,8 +5,8 @@ require 'sinatra'
 
 get '/' do
 	Slack.configure do |config|
-		  config.token = "xoxb-11404662370-wWxE6Kd5mEwFNzFDngexHsAK"
-		end
+	  config.token = "xoxb-11404662370-wWxE6Kd5mEwFNzFDngexHsAK"
+	end
 
 	client = Slack::RealTime::Client.new
 
@@ -26,4 +26,19 @@ get '/' do
 	end
 
 	client.start!
+end
+
+get '/get-happiness' do
+	Slack.configure do |config|
+	  config.token = "xoxb-11404662370-wWxE6Kd5mEwFNzFDngexHsAK"
+	end
+
+	client = Slack::RealTime::Client.new
+
+	client.chat_postMessage(channel: general_channel['@hhiroshi'], text: '¿Cómo estás hoy? :D', as_user: false)
+	client.chat_postMessage(channel: general_channel['@snahider'], text: '¿Cómo estás hoy? :D', as_user: false)
+	client.chat_postMessage(channel: general_channel['@jessy.robles'], text: '¿Cómo estás hoy? :D', as_user: false)
+	client.chat_postMessage(channel: general_channel['@gustavo.quiroz'], text: '¿Cómo estás hoy? :D', as_user: false)
+
+
 end
