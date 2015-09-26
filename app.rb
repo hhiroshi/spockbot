@@ -35,10 +35,10 @@ get '/get-happiness' do
 
 	client = Slack::RealTime::Client.new
 
-	client.chat_postMessage(channel: general_channel['@hhiroshi'], text: '¿Cómo estás hoy? :D', as_user: false)
-	client.chat_postMessage(channel: general_channel['@snahider'], text: '¿Cómo estás hoy? :D', as_user: false)
-	client.chat_postMessage(channel: general_channel['@jessy.robles'], text: '¿Cómo estás hoy? :D', as_user: false)
-	client.chat_postMessage(channel: general_channel['@gustavo.quiroz'], text: '¿Cómo estás hoy? :D', as_user: false)
+	client.chat_postMessage(channel: '@hhiroshi', text: '¿Cómo estás hoy? :D', as_user: false)
+	client.chat_postMessage(channel: '@snahider', text: '¿Cómo estás hoy? :D', as_user: false)
+	client.chat_postMessage(channel: '@jessy.robles', text: '¿Cómo estás hoy? :D', as_user: false)
+	client.chat_postMessage(channel: '@gustavo.quiroz', text: '¿Cómo estás hoy? :D', as_user: false)
 
 
 end
