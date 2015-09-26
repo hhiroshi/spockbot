@@ -28,8 +28,8 @@ get '/realtime' do
 
 	client.on :message do |data|
 	  case data['text']
-	  when 'bot hi' then
-	    client.message channel: data['channel'], text: "Hi <@#{data['user']}>!"
+	  when 'Hola mi bebe' then
+	    client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
 	  when /^bot/ then
 	    client.message channel: data['channel'], text: "Sorry <@#{data['user']}>, what?"
 	  end
