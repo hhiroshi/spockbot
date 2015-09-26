@@ -16,6 +16,8 @@ get '/' do
 
 	client.on :message do |data|
 	  case data['text']
+	  when 'Hola' then
+	    client.message channel: data['channel'], text: "Hola <@#{data['user']}>!"
 	  when 'Hola mi bebe' then
 	    client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
 	  when /^bot/ then
