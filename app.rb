@@ -14,7 +14,7 @@ get '/' do
 	client.chat_postMessage(channel: general_channel['id'], text: 'Jessy vas a jalar! #friendzone', as_user: true)
 end
 
-get 'realtime' do
+get '/realtime' do
 
 client = Slack::RealTime::Client.new
 
