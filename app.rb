@@ -33,7 +33,7 @@ get '/get-happiness' do
 	  config.token = "xoxb-11404662370-wWxE6Kd5mEwFNzFDngexHsAK"
 	end
 
-	client = Slack::RealTime::Client.new
+	client = Slack::Web::Client.new
 
 	client.chat_postMessage(channel: '@hhiroshi', text: '¿Cómo estás hoy? :D', as_user: false)
 	client.chat_postMessage(channel: '@snahider', text: '¿Cómo estás hoy? :D', as_user: false)
