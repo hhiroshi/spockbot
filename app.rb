@@ -20,7 +20,7 @@ get '/' do
 	    client.message channel: data['channel'], text: "Hola <@#{data['user']}>!"
 	  when 'Hola mi bebe' then
 	    client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
-	  when '[1-5]' then
+	  when '/[1-5]/' then
 	    client.message channel: data['channel'], text: "Gracias <@#{data['user']}>!"
 	  when /^bot/ then
 	    client.message channel: data['channel'], text: "Sorry <@#{data['user']}>, what?"
