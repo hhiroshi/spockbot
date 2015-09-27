@@ -20,6 +20,8 @@ get '/' do
 	    client.message channel: data['channel'], text: "Hola <@#{data['user']}>!"
 	  when 'Hola mi bebe' then
 	    client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
+	  when '[1-5]' then
+	    client.message channel: data['channel'], text: "Gracias <@#{data['user']}>!"
 	  when /^bot/ then
 	    client.message channel: data['channel'], text: "Sorry <@#{data['user']}>, what?"
 	  end
@@ -41,7 +43,7 @@ get '/get-happiness' do
 	#	client.chat_postMessage(channel: im['id'], text: '¿Cómo estás hoy? :D', as_user: true)
 	#end
 
-	client.chat_postMessage(channel: 'D0BBQ0Z5J', text: '¿Cómo estás hoy? :D', as_user: true)
+	client.chat_postMessage(channel: 'D0BBQ0Z5J', text: '¿Cómo estás hoy? :smile:', as_user: true)
 
 
 end
