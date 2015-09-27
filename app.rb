@@ -35,10 +35,13 @@ get '/get-happiness' do
 
 	client = Slack::Web::Client.new
 
-	client.chat_postMessage(channel: '@hhiroshi', text: '¿Cómo estás hoy? :D', as_user: false)
-	client.chat_postMessage(channel: '@snahider', text: '¿Cómo estás hoy? :D', as_user: false)
-	client.chat_postMessage(channel: '@jessy.robles', text: '¿Cómo estás hoy? :D', as_user: false)
-	client.chat_postMessage(channel: '@gustavo.quiroz', text: '¿Cómo estás hoy? :D', as_user: false)
+	#p client.users_list
+
+	#client.im_list['ims'].each do |im|
+	#	client.chat_postMessage(channel: im['id'], text: '¿Cómo estás hoy? :D', as_user: true)
+	#end
+
+	client.chat_postMessage(channel: 'D0BBQ0Z5J', text: '¿Cómo estás hoy? :D', as_user: true)
 
 
 end
