@@ -43,7 +43,7 @@ get '/' do
 			end
 			client.message channel: data['channel'], text: "Gracias <@#{data['user']}>!"
 		else
-			client.message channel: data['channel'], text: "Disculpa <@#{data['user']}> no te entiendo :cry:"
+			p "MENSAJE NO MAPEADO: #{data['text']}"
 		end
 	end
 
