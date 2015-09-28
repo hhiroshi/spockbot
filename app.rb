@@ -26,19 +26,26 @@ get '/' do
 
 		p data
 
-	  case data['text']
-	  when 'Hola' then
-	    client.message channel: data['channel'], text: "Hola <@#{data['user']}>!"
-	  when 'Hola mi bebe' then
-	    client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
-	  when /[1-5]/ then
-	  	score = Score.new
-	  	score.attributes {value:data['text'], user_id:"1", timestamp:Time.now}
-	  	score.save
-	    client.message channel: data['channel'], text: "Gracias <@#{data['user']}>!"
-	  when /^bot/ then
-	    client.message channel: data['channel'], text: "Sorry <@#{data['user']}>, what?"
-	  end
+		case data['text']
+		when 'Hola' then
+		client.message channel: data['channel'], text: "Hola <@#{data['user']}>!"
+		when 'Hola mi bebe' then
+		client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
+		when /[1-5]/ then
+			p "BEGIN"
+			score = Score.new
+			score.value = "asd" #data['text']
+			score.user_id = "1"
+			score.timestamp = Time.now
+			if score.save
+				p "OK"
+			else
+				p "ERROR"
+			end
+			client.message channel: data['channel'], text: "Gracias <@#{data['user']}>!"
+		when /^bot/ then
+			client.message channel: data['channel'], text: "Sorry <@#{data['user']}>, what?"
+		end
 	end
 
 	client.start!
