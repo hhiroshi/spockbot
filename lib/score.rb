@@ -2,7 +2,7 @@ require 'mongoid'
 
 class Score
   include Mongoid::Document
-  field :value
-  field :user_id
-  field :timestamp
+  field :value,   type: String
+  field :user_id,   type: String
+  field :timestamp,   type: Time
 end

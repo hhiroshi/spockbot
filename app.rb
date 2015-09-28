@@ -4,6 +4,8 @@ require 'json'
 require 'sinatra'
 require 'mongoid'
 
+require './lib/score'
+
 configure do
 	Mongoid.configure do |config|
     	config.sessions = { 
@@ -31,7 +33,9 @@ get '/' do
 	  when 'Hola mi bebe' then
 	    client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
 	  when /[1-5]/ then
-	  	Score.create {:value=>data, :user_id=>1, :timestamp=>Time.now}
+	  	score = Score.new
+	  	score.attributes {value:data, user_id:"1", timestamp:Time.now}
+	  	score.save
 	    client.message channel: data['channel'], text: "Gracias <@#{data['user']}>!"
 	  when /^bot/ then
 	    client.message channel: data['channel'], text: "Sorry <@#{data['user']}>, what?"
