@@ -32,19 +32,18 @@ get '/' do
 		when 'Hola mi bebe' then
 		client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
 		when /[1-5]/ then
-			p "BEGIN"
 			score = Score.new
-			score.value = "asd" #data['text']
-			score.user_id = "1"
+			score.value = data['text']
+			score.user_id = data['user']
 			score.timestamp = Time.now
 			if score.save
 				p "OK"
 			else
-				p "ERROR"
+				p "ERROR SCORE #{data['user']} - #{Time.now}"
 			end
 			client.message channel: data['channel'], text: "Gracias <@#{data['user']}>!"
-		when /^bot/ then
-			client.message channel: data['channel'], text: "Sorry <@#{data['user']}>, what?"
+		else
+			client.message channel: data['channel'], text: "Disculpa <@#{data['user']}> no te entiendo :cry:"
 		end
 	end
 
