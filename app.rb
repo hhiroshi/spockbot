@@ -31,7 +31,7 @@ get '/' do
 		client.message channel: data['channel'], text: "Hola <@#{data['user']}>!"
 		when 'Hola mi bebe' then
 		client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
-		when /[1-5]/ then
+		when /^[1-5]$/ then
 			score = Score.new
 			score.value = data['text']
 			score.user_id = data['user']
