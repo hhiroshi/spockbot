@@ -1,0 +1,22 @@
+development:
+  sessions:
+    default:
+      database: dev
+      hosts:
+        - localhost
+  options:
+
+test:
+  sessions:
+    default:
+      database: test
+      hosts:
+        - localhost
+
+production:
+  sessions:
+    default:
+      uri: mongodb://heroku_15z7j8xk:ki5utrmamp9jc668h020pfqg31@ds051903.mongolab.com:51903/heroku_15z7j8xk
+      options:
+        skip_version_check: true
+        safe: true

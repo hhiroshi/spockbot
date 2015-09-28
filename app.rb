@@ -2,6 +2,16 @@ require 'rubygems'
 require "slack-ruby-client"
 require 'json'
 require 'sinatra'
+require 'mongoid'
+
+configure do
+	Mongoid.configure do |config|
+    	config.sessions = { 
+			:default => { :hosts => ["localhost:27017"], :database => "spockbot"}
+		}
+	end
+end
+
 
 get '/' do
 	Slack.configure do |config|
@@ -21,6 +31,7 @@ get '/' do
 	  when 'Hola mi bebe' then
 	    client.message channel: data['channel'], text: "Hola papi <@#{data['user']}>!"
 	  when /[1-5]/ then
+	  	Score.create {:value=>data, :user_id=>1, :timestamp=>Time.now}
 	    client.message channel: data['channel'], text: "Gracias <@#{data['user']}>!"
 	  when /^bot/ then
 	    client.message channel: data['channel'], text: "Sorry <@#{data['user']}>, what?"
