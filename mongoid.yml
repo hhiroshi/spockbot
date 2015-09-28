@@ -1,20 +1,20 @@
 development:
-  sessions:
+  clients:
     default:
       database: dev
       hosts:
-        - localhost
+        - localhost:27017
   options:
 
 test:
-  sessions:
+  clients:
     default:
       database: test
       hosts:
         - localhost
 
 production:
-  sessions:
+  clients:
     default:
       uri: mongodb://heroku_15z7j8xk:ki5utrmamp9jc668h020pfqg31@ds051903.mongolab.com:51903/heroku_15z7j8xk
       options:
