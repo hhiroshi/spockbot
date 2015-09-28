@@ -24,7 +24,7 @@ get '/' do
 
 	client.on :message do |data|
 
-		p data
+		#p data
 
 		case data['text']
 		when 'Hola' then
@@ -57,13 +57,13 @@ get '/get-happiness' do
 
 	client = Slack::Web::Client.new
 
-	p client.users_list
+	#p client.users_list
 
-	#client.im_list['ims'].each do |im|
-	#	client.chat_postMessage(channel: im['id'], text: '¿Cómo estás hoy? (Del 1 al 5)', as_user: true)
-	#end
+	client.im_list['ims'].each do |im|
+		client.chat_postMessage(channel: im['id'], text: '¿Cómo estás hoy? (Del 1 al 5)', as_user: true)
+	end
 
-	client.chat_postMessage(channel: 'D0BBQ0Z5J', text: '¿Cómo estás hoy? (Del 1 al 5)', as_user: true)
+	#client.chat_postMessage(channel: 'D0BBQ0Z5J', text: '¿Cómo estás hoy? (Del 1 al 5)', as_user: true)
 end
 
 get '/dashboard' do
