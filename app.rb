@@ -102,10 +102,10 @@ get '/dashboard' do
 
 	end
 
-	@hhiroshi_happiness_index =  hhiroshi_score/hhiroshi_counter unless hhiroshi_counter==0
-	@gustavo_happiness_index =  gustavo_score/gustavo_counter unless gustavo_counter==0
-	@snahider_happiness_index =  snahider_score/snahider_counter unless snahider_counter==0
-	@jessy_happiness_index =  jessy_score/jessy_counter unless jessy_counter==0
+	@hhiroshi_happiness_index =  (hhiroshi_score/hhiroshi_counter.to_f).round(2) unless hhiroshi_counter==0
+	@gustavo_happiness_index =  (gustavo_score/gustavo_counter.to_f).round(2) unless gustavo_counter==0
+	@snahider_happiness_index =  (snahider_score/snahider_counter.to_f).round(2) unless snahider_counter==0
+	@jessy_happiness_index =  (jessy_score/jessy_counter.to_f).round(2) unless jessy_counter==0
 
 	erb :dashboard
 
