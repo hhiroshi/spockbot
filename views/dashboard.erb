@@ -1,9 +1,8 @@
 <h1>Dashboard</h1>
 
-Hiroshi: <%= @hhiroshi_happiness_index%>
+<%@users.each do |user|%>
+
+<img src="<%= user.photo %>">
+<%= "#{user.real_name}: #{user.happiness_index}"%>
 <br/>
-Angel: <%= @snahider_happiness_index%>
-<br/>
-Gustavo: <%= @gustavo_happiness_index%>
-<br/>
-Jessy: <%= @jessy_happiness_index%>
+<%end%>

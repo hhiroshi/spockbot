@@ -5,6 +5,7 @@ require 'sinatra'
 require 'mongoid'
 
 require './lib/score'
+require './lib/user'
 
 configure do
 	Mongoid.load!('./mongoid.yml')
@@ -66,8 +67,36 @@ get '/get-happiness' do
 	#client.chat_postMessage(channel: 'D0BBQ0Z5J', text: '¿Cómo estás hoy? (Del 1 al 5)', as_user: true)
 end
 
+get '/sync-users' do
+
+	Slack.configure do |config|
+	  config.token = "xoxb-11404662370-wWxE6Kd5mEwFNzFDngexHsAK"
+	end
+
+	client = Slack::Web::Client.new
+
+	client.users_list['members'].each do |member|
+		unless member['deleted']
+			user = User.new
+			user.id = member['id']
+			user.real_name = member['real_name']
+			user.photo = member['profile']['image_192']
+
+			if user.upsert	
+				p "OK"
+			else
+				p "ERROR USER #{member['id']} - #{Time.now}"
+			end
+		end		
+	end
+
+end	
+
 get '/dashboard' do
 
+	@users = User.all
+
+=begin
 	hhiroshi_score = 0
 	hhiroshi_counter = 0
 
@@ -106,7 +135,7 @@ get '/dashboard' do
 	@gustavo_happiness_index =  (gustavo_score/gustavo_counter.to_f).round(2) unless gustavo_counter==0
 	@snahider_happiness_index =  (snahider_score/snahider_counter.to_f).round(2) unless snahider_counter==0
 	@jessy_happiness_index =  (jessy_score/jessy_counter.to_f).round(2) unless jessy_counter==0
-
+=end
 	erb :dashboard
 
 end
