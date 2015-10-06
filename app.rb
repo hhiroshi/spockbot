@@ -81,6 +81,7 @@ get '/sync-users' do
 			user.id = member['id']
 			user.real_name = member['real_name']
 			user.photo = member['profile']['image_192']
+			user.is_bot = member['is_bot']
 
 			if user.upsert	
 				p "OK"
